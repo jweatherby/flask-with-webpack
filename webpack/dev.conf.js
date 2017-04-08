@@ -102,7 +102,7 @@ module.exports = {
         new WatchMissingNodeModulesPlugin(path.resolve(appRoot, 'node_modules')),
 
         // manifest for referencing changed files
-        new ManifestPlugin(path.resolve(appRoot, 'backend', 'static', 'manifest.json'), {
+        new ManifestPlugin(path.resolve(appRoot, 'manifest.json'), {
             rootAssetPath: './frontend',
             ignorePaths: [/^\./]
         })

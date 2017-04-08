@@ -3,7 +3,7 @@
 
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
-frontend/static/js/*
+manifest.json
 
 # dependencies
 node_modules
