@@ -1,7 +1,7 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
-const ManifestPlugin = require('webpack-manifest-plugin');
+const ManifestPlugin = require('manifest-revision-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 
 
@@ -12,16 +12,16 @@ module.exports = {
 
     devtool: 'eval',
 
-    entry: ['babel-polyfill', './frontend/index.js'],
+    entry: {
 
+        app_js: ['babel-polyfill', './frontend/index.js'],
+    },
 
     output: {
-        app_js: {
-            path: path.resolve(appRoot, 'backend', 'static'),
-            publicPath: 'http://localhost:8081/static/',
-            filename: '[name].[hash].js',
-            chunkfilename: '[id].[hash].js'
-        }
+        path: path.resolve(appRoot, 'backend', 'static'),
+        publicPath: 'http://localhost:8081/',
+        filename: '[name].[hash].js',
+        chunkfilename: '[id].[hash].js'
     },
 
     resolve: {
@@ -103,9 +103,9 @@ module.exports = {
         new WatchMissingNodeModulesPlugin(path.resolve(appRoot, 'node_modules')),
 
         // manifest for referencing changed files
-        new ManifestPlugin({
-            fileName: path.resolve(appRoot, 'backend', 'static', 'manifest.json'),
-            writeToFileEmit: true
+        new ManifestPlugin(path.resolve(appRoot, 'backend', 'static', 'manifest.json'), {
+            rootAssetPath: './frontend',
+            ignorePaths: [/^\./]
         })
     ]
 }
