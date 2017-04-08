@@ -13,7 +13,6 @@ module.exports = {
     devtool: 'eval',
 
     entry: {
-
         app_js: ['babel-polyfill', './frontend/index.js'],
     },
 

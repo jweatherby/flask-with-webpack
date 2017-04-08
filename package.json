@@ -48,10 +48,10 @@
     "webpack": "1.14.0",
     "webpack-dev-server": "^2.4.2",
     "webpack-manifest-plugin": "1.1.0",
+    "manifest-revision-webpack-plugin": "^0.4.0",
     "whatwg-fetch": "2.0.2"
   },
   "dependencies": {
-    "manifest-revision-webpack-plugin": "^0.4.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^4.4.6",
