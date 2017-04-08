@@ -18,5 +18,6 @@ export const Home = props =>
     <div>
         <h1>
             Welcome to FWW (Flask with Webpack)
+            Hello World
         </h1>
     </div>

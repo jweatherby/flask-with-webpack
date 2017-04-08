@@ -16,9 +16,11 @@ module.exports = {
 
 
     output: {
-            app_js: {path: path.resolve(appRoot, 'backend', 'static'),
-            publicPath: '/static/',
-            filename: 'bundle.js'
+        app_js: {
+            path: path.resolve(appRoot, 'backend', 'static'),
+            publicPath: 'http://localhost:8081/static/',
+            filename: '[name].[hash].js',
+            chunkfilename: '[id].[hash].js'
         }
     },
 
@@ -30,9 +32,6 @@ module.exports = {
 			'react-native': 'react-native-web',
 			'react': path.resolve(appRoot, 'node_modules', 'react')
         }
-    },
-    settings: {
-        "import/parser": "babel-eslint",
     },
     module: {
         loaders: [
@@ -104,6 +103,9 @@ module.exports = {
         new WatchMissingNodeModulesPlugin(path.resolve(appRoot, 'node_modules')),
 
         // manifest for referencing changed files
-        new ManifestPlugin({fileName: path.resolve(appRoot, 'manifest.json'), writeToFileEmit: true})
+        new ManifestPlugin({
+            fileName: path.resolve(appRoot, 'backend', 'static', 'manifest.json'),
+            writeToFileEmit: true
+        })
     ]
 }
